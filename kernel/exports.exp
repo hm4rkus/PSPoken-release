@@ -1,0 +1,28 @@
+# Exports of pspoken_kernel.prx.
+#
+# A PRX lists the functions it offers other modules in export tables. The build turns this file
+# into the module's table, and `psp-build-exports -s exports.exp` turns it into PSPokenKernel.S,
+# the import stub the EBOOT links against. The app generates that stub during its build.
+
+PSP_BEGIN_EXPORTS
+
+# Mandatory: the entry points and module info the firmware's loader looks up.
+PSP_EXPORT_START(syslib, 0, 0x8000)
+PSP_EXPORT_FUNC_HASH(module_start)
+PSP_EXPORT_FUNC_HASH(module_stop)
+PSP_EXPORT_VAR_HASH(module_info)
+PSP_EXPORT_END
+
+# Our library. Flag 0x4001 exports it to user mode, so the EBOOT can call it through syscalls.
+PSP_EXPORT_START(PSPokenKernel, 0, 0x4001)
+PSP_EXPORT_FUNC(pk_display_on)
+PSP_EXPORT_FUNC(pk_display_off)
+PSP_EXPORT_FUNC(pk_get_brightness)
+PSP_EXPORT_FUNC(pk_set_brightness)
+PSP_EXPORT_FUNC(pk_read_buttons)
+PSP_EXPORT_FUNC(pk_get_model)
+PSP_EXPORT_FUNC(pk_get_volume)
+PSP_EXPORT_FUNC(pk_read_avrcp)
+PSP_EXPORT_END
+
+PSP_END_EXPORTS

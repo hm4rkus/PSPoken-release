@@ -1,0 +1,26 @@
+name: Idea
+description: Something PSPoken could do, or do better.
+title: "[idea] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+      description: What you'd like, and what it would help with.
+    validations:
+      required: true
+  - type: dropdown
+    id: device
+    attributes:
+      label: The console you use
+      multiple: true
+      options:
+        - PSP-1000
+        - PSP-2000
+        - PSP-3000
+        - PSP Go
+        - PSP Street (E1000)
+        - PS Vita
+        - PS TV
+        - PPSSPP (emulator)

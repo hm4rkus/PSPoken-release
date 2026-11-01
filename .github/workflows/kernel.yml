@@ -1,0 +1,24 @@
+name: Kernel module
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+# Builds pspoken_kernel.prx from kernel/ in the PSP toolchain's image, pinned to the exact image the
+# releases are built with (kernel/README.md), and prints its SHA-256: the hash in each release's
+# SHA256SUMS.txt is this build's.
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: pspdev/pspdev@sha256:54895e6f5afb71b8f4f6915ee6d5023e1e087ca7afdf2dcb1d7a694a5233e45f
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: make -C kernel
+      - name: SHA-256
+        run: sha256sum kernel/pspoken_kernel.prx | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pspoken_kernel
+          path: kernel/pspoken_kernel.prx

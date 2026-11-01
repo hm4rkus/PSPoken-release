@@ -1,0 +1,6 @@
+# Build outputs of kernel/ (make -C kernel)
+*.o
+*.elf
+*.prx
+kernel/exports.c
+.DS_Store
