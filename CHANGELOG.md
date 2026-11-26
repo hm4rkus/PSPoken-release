@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.0-alpha
+
+PSP only for now: the PS Vita build of 0.9.0 is coming soon (0.8.0-alpha stays the Vita version until then).
+
+- **Playback speed for each book**, ×0.05 to ×3.00 in steps of 0.05, with the pitch kept: ↑ / ↓ in the player (a readout shows the speed), or △ → Speed in the book menu. The time left follows the speed. Uses the sonic library (Apache 2.0).
+- **The CPU clock follows playback:** while a book plays, the PSP raises its clock (up to 333 MHz) only when a fast speed needs it, and lowers it again when it doesn't. HE-AAC books keep up at ×3.00; full-cast stereo books may have short gaps near ×3.00.
+- **The legends** show L R ±30s as one entry, to make room for ↕ Speed, and △ is "Options".
+
 ## 0.8.0-alpha
 
 The first community test release, for the PSP and the native PS Vita app. So far, I've been its only user; compatibility feedback is welcome.

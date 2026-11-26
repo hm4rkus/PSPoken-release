@@ -6,7 +6,9 @@
 
 An audiobook player for the PSP and the PS Vita. It plays DRM-free `.m4b` audiobooks with their chapters, covers and details, and remembers your place in every book.
 
-> **0.8.0-alpha — first community test release.** I've tested it on a small set of devices; your feedback will help establish compatibility. The app is closed source and free to use. The optional PSP kernel module is open source, in [`kernel/`](kernel/). See [Source code](#source-code).
+> **0.9.0-alpha — playback speed, on the PSP.** The PS Vita build of 0.9.0 is coming soon; until then, the Vita version is [0.8.0-alpha](https://github.com/hm4rkus/PSPoken-release/releases/tag/v0.8.0-alpha), without playback speed.
+>
+> **This is an alpha.** I've tested it on a small set of devices; your feedback will help establish compatibility. The app is closed source and free to use. The optional PSP kernel module is open source, in [`kernel/`](kernel/). See [Source code](#source-code).
 
 **[Downloads](https://github.com/hm4rkus/PSPoken-release/releases) · [Installation](#installing) · [Controls](#controls) · [Optional PSP features](#optional-psp-kernel-module)**
 
@@ -25,6 +27,7 @@ Previewing backgrounds and colors:
 - **Pick up where you stopped** in every book.
 - **Browse by cover, author or series**, with sorting and progress at a glance.
 - **Chapters and time remaining**, with adjustable skips and scrubbing.
+- **Playback speed for each book**, from ×0.05 to ×3.00, without changing the voice's pitch (PSP; PS Vita coming soon).
 - **Keep listening while you browse** your library.
 - **Pocket listening** with locked buttons and lower PSP CPU clocks while dark.
 - **Your look:** two backgrounds, 40 color pairs and three text sizes.
@@ -146,7 +149,7 @@ On the Go, books on both internal storage and the M2 card appear in one library.
 
 ### PS Vita
 
-1. Download `PSPoken-<version>-Vita.vpk` from [Releases](../../releases), copy it to the Vita, and install it with VitaShell.
+1. Download `PSPoken-<version>-Vita.vpk` from [Releases](../../releases), copy it to the Vita, and install it with VitaShell. For now that's [0.8.0-alpha's](https://github.com/hm4rkus/PSPoken-release/releases/tag/v0.8.0-alpha): 0.9.0's Vita build is coming soon.
 2. Make a folder called `AUDIOBOOKS` and copy your `.m4b` files into it. It can be at the root of `ux0:` (the memory card, or an SD2Vita mounted as `ux0:`), `uma0:` (an SD2Vita mounted beside the memory card) or `imc0:` (the PS Vita 2000's internal storage).
 3. Start **PSPoken** from the home screen.
 
@@ -164,7 +167,7 @@ If your console is set to confirm with ○, PSPoken follows: × and ○ swap.
 | --- | --- |
 | L / R | Books and Authors tabs |
 | × | Play the selected book (on the Authors tab: that author's books) |
-| △ | Book menu: play, restart, mark finished / unfinished, go to author / series, Information (options depend on the book) |
+| △ | Book menu: play, restart, speed, mark finished / unfinished, go to author / series, Information (options depend on the book) |
 | START | Back to the book playing |
 | SELECT | Settings |
 
@@ -176,6 +179,7 @@ If your console is set to confirm with ○, PSPoken follows: × and ○ swap.
 | L / R (tap) | Skip back / forward (30 s, or the Skip interval in Settings) |
 | L / R (hold) | Scrub back / forward, landing where you let go |
 | ◀ / ▶ | Previous / next chapter (◀ goes to the start of the chapter first) |
+| ↑ / ↓ | Faster / slower, in steps of 0.05 (hold to keep going) |
 | □ | Chapter list |
 | △ | The book's options |
 | ○ | Back to the library (the book keeps playing) |
@@ -184,6 +188,8 @@ If your console is set to confirm with ○, PSPoken follows: × and ○ swap.
 **Volume:** the console’s own volume buttons.
 
 **Headphone controls:** on the PSP Go and PS Vita, compatible Bluetooth headphones can use one tap for play / pause, two to skip forward, three to skip back. The gesture depends on your headphones; PSPoken responds to their play / pause, next and previous commands. Sony’s wired remote has separate play / pause and skip buttons. Skips use your selected interval.
+
+**Playback speed** (PSP for now; the PS Vita build with it is coming soon): each book keeps its own, ×1.00 until you change it. Set it in the player with ↑ / ↓, or from the library with △ → Speed and ◀ / ▶. The time left shown for the book is the listening time at its speed; the chapter times and skips stay in the book's own time.
 
 **Book information:** use △ → Information; scroll long details with the d-pad or analog stick.
 
@@ -208,7 +214,7 @@ SELECT in the library opens Settings:
 
 ## Your data
 
-- **PSP:** in the app's folder, `PSP/GAME/PSPoken/`: your settings (`settings.txt`), your place in each book (`progress.txt`), the library's cache (`library.cache`) and the covers (`covers/`). Deleting `progress.txt` starts every book over.
+- **PSP:** in the app's folder, `PSP/GAME/PSPoken/`: your settings (`settings.txt`), your place in each book (`progress.txt`), each book's speed (`book_settings.txt`), the library's cache (`library.cache`) and the covers (`covers/`). Deleting `progress.txt` starts every book over.
 - **PS Vita:** the same files, in `ux0:data/PSPoken/`.
 
 Playback works offline: no account, downloads or streaming.
@@ -233,6 +239,12 @@ Playback works offline: no account, downloads or streaming.
 - **Checking it yourself:** every release's `pspoken_kernel.prx` is built from that source by this repository's Actions, and its SHA-256 is in the release's `SHA256SUMS.txt`. [`kernel/README.md`](kernel/README.md) says how to build it and compare.
 
 The PS Vita version has no kernel module.
+
+## Support
+
+Enjoying PSPoken? You can thank me with a coffee.
+
+<a href="https://buymeacoffee.com/hm4rkus"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40"></a>
 
 ## Credits and notices
 

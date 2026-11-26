@@ -101,6 +101,10 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 The kernel module, `pspoken_kernel.prx`, links the import stubs of the custom firmware's systemctrl library (`libpspsystemctrl_kernel`, from the PSP toolchain's `psp-cfw-sdk` package, which is licensed under the GNU General Public License v3.0: <https://www.gnu.org/licenses/gpl-3.0.html>). The full licence text is included in [`licenses/GPL-3.0.txt`](licenses/GPL-3.0.txt). So the built module is distributed under the GPL-3.0; its complete source is in [`kernel/`](https://github.com/hm4rkus/PSPoken-release/tree/main/kernel), and how to build it in [`kernel/README.md`](https://github.com/hm4rkus/PSPoken-release/blob/main/kernel/README.md). The app itself (`EBOOT.PBP`) doesn't link it.
 
+## sonic (PSP and PS Vita)
+
+Uses sonic by Bill Cox (<https://github.com/waywardgeek/sonic>), copyright 2010, 2011 Bill Cox, to change a book's playback speed without changing its pitch. Used unmodified (commit `b93885dc`). Licensed under the Apache License, Version 2.0, included in [`licenses/SONIC-APACHE-2.0.txt`](licenses/SONIC-APACHE-2.0.txt).
+
 ## VitaSDK (PS Vita)
 
 The PS Vita build is made with VitaSDK (<https://vitasdk.org>) and its C library. The VitaSDK header/import-stub MIT licence is reproduced in [`licenses/VITASDK.txt`](licenses/VITASDK.txt).
